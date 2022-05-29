@@ -46,11 +46,7 @@ if __name__=='__main__':
         random_str=generate(10)
         leaves.append(random_str)
     begin = time.time()   
-    print("哈希函数: Sha256")
     print("构造的Merkle Tree:",merkle(leaves))
-    end = time.time()    
-    time_all = end -begin
-    print("生成时间:",format(time_all,'.3f',),'ms')
     
           
     
