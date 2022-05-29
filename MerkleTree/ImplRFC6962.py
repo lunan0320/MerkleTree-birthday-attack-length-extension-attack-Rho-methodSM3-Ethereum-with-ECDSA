@@ -51,5 +51,5 @@ if __name__ == '__main__':
     merkle_tree,h = MerkleTree(leaves)
     print('叶子节点:',' '.join(leaves)," 树高:",h)
     for i in range(h+1):
-        print('第{0}层:\n{1}\n'.format(h-i + 1,",\n".join(merkle_tree[i])))
+        print('第{0}层:\n{1}\n'.format(i + 1,",\n".join(merkle_tree[i])))
     print()

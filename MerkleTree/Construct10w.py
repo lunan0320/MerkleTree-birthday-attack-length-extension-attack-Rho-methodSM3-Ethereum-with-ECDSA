@@ -3,8 +3,6 @@ import time
 import string
 import random
 
-
-
 #sha256
 def hash_function(origin,res='sha256'):
     #对输入过一次sha256
@@ -46,7 +44,7 @@ if __name__=='__main__':
         random_str=generate(10)
         leaves.append(random_str)
     begin = time.time()   
-    print("构造的Merkle Tree:",merkle(leaves))
+    print("Root:",merkle(leaves))
     
           
     
