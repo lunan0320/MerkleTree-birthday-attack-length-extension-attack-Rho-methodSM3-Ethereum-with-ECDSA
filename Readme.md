@@ -10,6 +10,8 @@ The projects are as follows:
 
 - Implement length extension attack  for SM3.
 
+- Implement the Rho method of reduced SM3
+
 - Implement length extension attack for SHA256.
 
 - My optmized implemention for SM3.
