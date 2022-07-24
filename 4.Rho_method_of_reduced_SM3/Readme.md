@@ -29,3 +29,7 @@ def Rho_attack(n):
 ### 8bit
 
 ![](https://github.com/lunan0320/Crypto_projects/blob/main/4.Rho_method_of_reduced_SM3/8bit.png)
+
+## 16bit
+
+![](https://github.com/lunan0320/Crypto_projects/blob/main/4.Rho_method_of_reduced_SM3/16bit.png)
