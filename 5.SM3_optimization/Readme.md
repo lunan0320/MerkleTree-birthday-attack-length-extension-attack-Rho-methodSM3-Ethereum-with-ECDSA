@@ -6,7 +6,9 @@
 
 ### 2.运行方式
 
-windows中，在Visual Studio中导入sm3.cpp以及sm3.h文件，运行sm3.cpp文件即可。
+方法一：windows中，在Visual Studio中导入sm3.cpp以及sm3.h文件，运行sm3.cpp文件即可。
+
+方法二：windows中，直接运行optimize_sm3.exe文件即可。
 
 ### 3.实现效果
 
