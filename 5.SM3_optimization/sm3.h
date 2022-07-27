@@ -1,6 +1,6 @@
 #pragma once
 #include<iostream>
-# include <immintrin.h>
+#include <immintrin.h>
 using namespace std;
 
 #define SM3_DIGEST_SIZE		32
@@ -23,18 +23,19 @@ using namespace std;
 # define _mm_rotl_epi32(X,i) \
 	_mm_xor_si128(_mm_slli_epi32((X),(i)), _mm_srli_epi32((X),32-(i)))
 
-#define UNROLL(A, B, C, D, E, F, G, H, xx)				\
+
+#define UNROLL(A, B, C, D, E, F, G, H, xx)					\
 	SS1 = ROL32((ROL32(A, 12) + E + ROL32(T[j],j)), 7);		\
-	SS2 = SS1 ^ ROL32(A, 12);				\
+	SS2 = SS1 ^ ROL32(A, 12);								\
 	TT1 = FF##xx(A, B, C) + D + SS2 + (W[j] ^ W[j + 4]);	\
-	TT2 = GG##xx(E, F, G) + H + SS1 + W[j];			\
-	B = ROL32(B, 9);					\
-	H = TT1;						\
-	F = ROL32(F, 19);					\
-	D = P0(TT2);						\
+	TT2 = GG##xx(E, F, G) + H + SS1 + W[j];					\
+	B = ROL32(B, 9);										\
+	H = TT1;												\
+	F = ROL32(F, 19);										\
+	D = P0(TT2);											\
 	j++
 
-#define FULL_UNROLL_8(A, B, C, D, E, F, G, H, xx)				\
+#define UNROLL8(A, B, C, D, E, F, G, H, xx)			\
 	UNROLL(A, B, C, D, E, F, G, H, xx);				\
 	UNROLL(H, A, B, C, D, E, F, G, xx);				\
 	UNROLL(G, H, A, B, C, D, E, F, xx);				\
@@ -44,7 +45,7 @@ using namespace std;
 	UNROLL(C, D, E, F, G, H, A, B, xx);				\
 	UNROLL(B, C, D, E, F, G, H, A, xx)
 
-
+//定义结构体
 typedef struct sm3_ctx_t {
 	uint32_t digest[SM3_STATE_WORDS];
 	int nblocks;  
@@ -52,12 +53,14 @@ typedef struct sm3_ctx_t {
 	int num;
 }sm3_ctx;
 
+//主要函数部分的声明
 void sm3_init(sm3_ctx* ctx);
 void sm3_update(sm3_ctx* ctx, const uint8_t* data, size_t data_len);
 void sm3_final(sm3_ctx* ctx, uint8_t* digest);
 void sm3(const uint8_t* message, size_t mlen, uint8_t res[SM3_BLOCK_SIZE]);
 static void sm3_compress(uint32_t digest[SM3_BLOCK_SIZE / sizeof(uint32_t)], const uint8_t block[SM3_BLOCK_SIZE]);
 
+//字节转换
 uint64_t byte_swap64(uint64_t i)
 {
 	uint64_t j;
@@ -81,6 +84,7 @@ uint32_t byte_swap32(uint32_t i)
 	return j;
 }
 
+//初始化函数
 void sm3_init(sm3_ctx* ctx) {
 	ctx->digest[0] = 0x7380166F;
 	ctx->digest[1] = 0x4914B2B9;
@@ -148,6 +152,7 @@ void sm3_final(sm3_ctx* ctx, uint8_t* digest) {
 	}
 }
 
+//sm3的压缩部分
 static void sm3_compress(uint32_t digest[SM3_BLOCK_SIZE / sizeof(uint32_t)], const uint8_t block[SM3_BLOCK_SIZE]) {
 	int j;
 	uint32_t W[68], W1[64];
@@ -159,16 +164,16 @@ static void sm3_compress(uint32_t digest[SM3_BLOCK_SIZE / sizeof(uint32_t)], con
 	uint32_t A = digest[0], B = digest[1], C = digest[2], D = digest[3];
 	uint32_t E = digest[4], F = digest[5], G = digest[6], H = digest[7];
 
+	//此处利用了SIMD的单指令多数据模式优化
 	uint32_t SS1, SS2, TT1, TT2, T[64];
-
 	for (j = 0; j < 16; j += 4) {
 		X = _mm_loadu_si128((__m128i*)(block + j * 4)); 
 		X = _mm_shuffle_epi8(X, V);
 		_mm_storeu_si128((__m128i*)(W + j), X);
 	}
-	
+	//X = (W[j - 3], W[j - 2], W[j - 1], 0) 
 	for (j = 16; j < 68; j += 4) {
-		X = _mm_loadu_si128((__m128i*)(W + j - 3));   //X = (W[j - 3], W[j - 2], W[j - 1], 0) 
+		X = _mm_loadu_si128((__m128i*)(W + j - 3));   
 		X = _mm_andnot_si128(M, X);
 
 		X = _mm_rotl_epi32(X, 15);
@@ -177,7 +182,8 @@ static void sm3_compress(uint32_t digest[SM3_BLOCK_SIZE / sizeof(uint32_t)], con
 		Y = _mm_loadu_si128((__m128i*)(W + j - 16));
 		X = _mm_xor_si128(X, Y);
 
-		Y = _mm_rotl_epi32(X, (23 - 15));  //计算P1(x) (x^ROL32(x,15)^ROL32(x,23))
+		//计算P1(x) (x^ROL32(x,15)^ROL32(x,23))
+		Y = _mm_rotl_epi32(X, (23 - 15));  
 		Y = _mm_xor_si128(Y, X);
 		Y = _mm_rotl_epi32(Y, 15);
 		X = _mm_xor_si128(X, Y);
@@ -188,7 +194,8 @@ static void sm3_compress(uint32_t digest[SM3_BLOCK_SIZE / sizeof(uint32_t)], con
 		Y = _mm_loadu_si128((__m128i*)(W + j - 6));
 		X = _mm_xor_si128(X, Y);
 
-		R = _mm_shuffle_epi32(X, 0);  // W[j + 3] ^= P1(rol32(W[j + 1], 15)) 
+		// W[j + 3] ^= P1(rol32(W[j + 1], 15)) 
+		R = _mm_shuffle_epi32(X, 0); 
 		R = _mm_and_si128(R, M);
 		Y = _mm_rotl_epi32(R, 15);
 		Y = _mm_xor_si128(Y, R);
@@ -242,14 +249,14 @@ static void sm3_compress(uint32_t digest[SM3_BLOCK_SIZE / sizeof(uint32_t)], con
 	}
 
 	j = 0;
-	FULL_UNROLL_8(A, B, C, D, E, F, G, H, 0);
-	FULL_UNROLL_8(A, B, C, D, E, F, G, H, 0);
-	FULL_UNROLL_8(A, B, C, D, E, F, G, H, 1);
-	FULL_UNROLL_8(A, B, C, D, E, F, G, H, 1);
-	FULL_UNROLL_8(A, B, C, D, E, F, G, H, 1);
-	FULL_UNROLL_8(A, B, C, D, E, F, G, H, 1);
-	FULL_UNROLL_8(A, B, C, D, E, F, G, H, 1);
-	FULL_UNROLL_8(A, B, C, D, E, F, G, H, 1);
+	UNROLL8(A, B, C, D, E, F, G, H, 0);
+	UNROLL8(A, B, C, D, E, F, G, H, 0);
+	UNROLL8(A, B, C, D, E, F, G, H, 1);
+	UNROLL8(A, B, C, D, E, F, G, H, 1);
+	UNROLL8(A, B, C, D, E, F, G, H, 1);
+	UNROLL8(A, B, C, D, E, F, G, H, 1);
+	UNROLL8(A, B, C, D, E, F, G, H, 1);
+	UNROLL8(A, B, C, D, E, F, G, H, 1);
 	
 	digest[0] ^= A;
 	digest[1] ^= B;
