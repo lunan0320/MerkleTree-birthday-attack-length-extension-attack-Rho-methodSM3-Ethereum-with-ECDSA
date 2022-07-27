@@ -91,9 +91,19 @@ tree=hash_function(chr(int('0x01',16))+left+right)
 
 区别只是初始的叶子节点不同。简单模式有固定的叶子节点，随机模式则每次随机生成。
 
+**简单模式：**
 
+![](https://github.com/lunan0320/Crypto_projects/blob/main/1.MerkleTree/proof_0.png)
 
-简单模式
+**随机模式：**
+
+![](https://github.com/lunan0320/Crypto_projects/blob/main/1.MerkleTree/proof_1.png)
+
+*节点编号超出节点数量，会报错*
+
+![](https://github.com/lunan0320/Crypto_projects/blob/main/1.MerkleTree/proof_error.png)
+
+### 4.参考代码
 
 参考：[RFC6962](https://www.rfc-editor.org/rfc/rfc6962.html)
 
