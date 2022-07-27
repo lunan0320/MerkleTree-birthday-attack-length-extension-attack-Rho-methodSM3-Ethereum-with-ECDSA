@@ -27,7 +27,15 @@ int main()
 		sm3(c_msg, msg.size(), res);
 	}
 	end = clock();
-	cout << "测试次数：" << batch << endl;
+
+	cout << "Hash值:";
+	for (int i = 0; i < 32; i++)
+	{
+		printf("%02x", res[i]);
+		if (((i + 1) % 4) == 0) printf(" ");
+	}
+	
+	cout << "\n测试次数：" << batch << endl;
 	cout << "效率用时：" << double(end - begin) / CLOCKS_PER_SEC << "s" << endl;
 
 	return 0;
