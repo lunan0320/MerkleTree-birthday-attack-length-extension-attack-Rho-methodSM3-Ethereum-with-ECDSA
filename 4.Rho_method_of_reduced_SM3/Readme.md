@@ -28,6 +28,8 @@ def Rho_attack(n):
     print("Failed")
 ```
 
+![](https://github.com/lunan0320/Crypto_projects/blob/main/4.Rho_method_of_reduced_SM3/Rho.png)
+
 ### 2.运行方式
 
 python文件，直接在命令行中输入:
@@ -47,3 +49,4 @@ python文件，直接在命令行中输入:
 #### 3) 24bit
 
 ![](https://github.com/lunan0320/Crypto_projects/blob/main/4.Rho_method_of_reduced_SM3/24bit.png)
+
