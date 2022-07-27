@@ -44,6 +44,7 @@ if __name__=='__main__':
         random_str=generate(10)
         leaves.append(random_str)
     begin = time.time()   
+    print("数据规模:100000")
     print("Root:",merkle(leaves))
     
           
