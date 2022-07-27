@@ -93,7 +93,7 @@ if __name__ == '__main__':
     flag = int(input('请选择模式:\n简单模式:0\n随机模式:1\n'))
     if flag == 1:   
         leaves = []
-        #随机生成10w个结点，包括字符和数字
+        #随机生成结点，包括字符和数字
         leaf_number = int(input('请输入初始的叶子节点数量:'))
         for i in range (0,leaf_number):
             random_str=generate(10)
