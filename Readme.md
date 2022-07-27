@@ -1,22 +1,26 @@
-This repo records some cryptography projects done during the learning process
+This repo records some cryptography projects done during the learning process.
+
+Project completer: 闫楠
+
+Github account name: [lunan0320](https://github.com/lunan0320)
+
+
 
 The projects are as follows:
 
 
 
-- Implement Merkle Tree.
+✅ Project: Implement **Merkle Tree**.
 
-- naive birthday attack of reduced SM3.
+✅ Project: naive **birthday attack** of reduced SM3.
 
-- Implement length extension attack  for SM3.
+✅ Project: Implement **length extension attack**  for SM3.
 
-- Implement the Rho method of reduced SM3
+✅ Project: Implement the **Rho method** of reduced SM3.
 
-- Implement length extension attack for SHA256.
+✅ Project:  implement and try to **optimize SM3**.
 
-- My optmized implemention for SM3.
 
-  
 
-  
+
 
