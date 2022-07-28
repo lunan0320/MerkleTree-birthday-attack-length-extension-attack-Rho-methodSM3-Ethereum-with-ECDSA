@@ -20,7 +20,5 @@ The projects are as follows:
 
 ✅ Project:  implement and try to **optimize SM3**.
 
-
-
-
+✅ Project:  report on the application of this deduce technique in **Ethereum with ECDSA**
 
