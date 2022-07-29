@@ -31,3 +31,14 @@ The finished projects are as follows:
 ✅ Project:  report on the application of this deduce technique in **Ethereum with ECDSA**
 
 ✅ Project:  **Forge a signature** to pretend that you are Satoshi
+
+✅ Project: research report on **MPT**
+
+- Project: verify the above pitfalls with proof-of-concept code
+- Project: Implement the above ECMH scheme
+- Project: Implement a PGP scheme with SM2
+- Project: implement sm2 2P sign with real network communication
+- Project: implement sm2 2P decrypt with real network communication
+
+- Project: send a tx on Bitcoin testnet, and parse the tx data down to every bit, better write script yourself
+- Project: Write a circuit to prove that your CET6 grade is larger than 425.
