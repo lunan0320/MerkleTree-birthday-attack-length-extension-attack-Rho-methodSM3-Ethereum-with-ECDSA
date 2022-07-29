@@ -12,7 +12,7 @@ Project completer: **闫楠 201900161028**
 
 Github account name: [lunan0320](https://github.com/lunan0320)
 
-
+***（以下项目均为个人独立完成）***
 
 ------
 
