@@ -13,21 +13,21 @@ forge_signature.py
 ![](https://github.com/lunan0320/Crypto_projects/blob/main/7.Forge_a_signature/img/1.png)
 
 2）计算**R'**
-$$
-R' = (x',y') = uG + vP
-$$
+
+![](https://github.com/lunan0320/Crypto_projects/blob/main/7.Forge_a_signature/img/2.png)
+
 3）分别计算**r‘**和**s'**
-$$
-r' = x' mod (n)\qquad s' = r'v^{-1} mod(n)
-$$
+
+![](https://github.com/lunan0320/Crypto_projects/blob/main/7.Forge_a_signature/img/3.png)
+
 4）伪造哈希值**e'**
-$$
-e' = r' u v ^{-1}mod(n)
-$$
+
+![](https://github.com/lunan0320/Crypto_projects/blob/main/7.Forge_a_signature/img/4.png)
+
 5）伪造的签名值**signature'**
-$$
-signature' = (R'_{x},s')
-$$
+
+![](https://github.com/lunan0320/Crypto_projects/blob/main/7.Forge_a_signature/img/5.png)
+
 6）验证伪造是否成功：验证计算出的**r**是否和**r'**相同即可证明
 
 ```c++
