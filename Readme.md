@@ -22,3 +22,4 @@ The projects are as follows:
 
 ✅ Project:  report on the application of this deduce technique in **Ethereum with ECDSA**
 
+✅ Project:  **Forge a signature** to pretend that you are Satoshi
