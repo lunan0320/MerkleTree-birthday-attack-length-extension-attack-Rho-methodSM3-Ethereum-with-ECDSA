@@ -10,10 +10,8 @@ forge_signature.py
 
 (注：这里插入公式后一直无法在浏览器中成功渲染，遂采用截图)
 
-1）随机选择**u** 和 v
-$$
-u,v \in F_{n}^{*}
-$$
+1）随机选择**u** 和 **v**
+
 ![](https://github.com/lunan0320/Crypto_projects/blob/main/7.Forge_a_signature/img/1.png)
 
 2）计算**R'**
