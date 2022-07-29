@@ -9,7 +9,9 @@ forge_signature.py
 #### 基本原理
 
 1）随机选择**u** 和 **v**
-
+$$
+u,v \in F_{n}^{*}
+$$
 ![](https://github.com/lunan0320/Crypto_projects/blob/main/7.Forge_a_signature/img/1.png)
 
 2）计算**R'**
