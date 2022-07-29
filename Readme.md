@@ -1,14 +1,22 @@
-This repo records some cryptography projects done during the learning process.
+This repo records some **cryptography projects** done during the learning process.
 
-Project completer: 闫楠
+
+
+------
+
+| Project completer |  student ID  |            Github account name            |
+| :---------------: | :----------: | :---------------------------------------: |
+|       闫楠        | 201900161028 | [lunan0320](https://github.com/lunan0320) |
+
+Project completer: **闫楠 201900161028**
 
 Github account name: [lunan0320](https://github.com/lunan0320)
 
 
 
-The projects are as follows:
+------
 
-
+The finished projects are as follows:
 
 ✅ Project: Implement **Merkle Tree**.
 
