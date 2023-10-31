@@ -2,13 +2,6 @@ This repo records some **cryptography projects** done during the learning proces
 
 
 
-------
-
-| Project completer |  student ID  |            Github account name            |
-| :---------------: | :----------: | :---------------------------------------: |
-|       闫楠        | 201900161028 | [lunan0320](https://github.com/lunan0320) |
-
-Project completer: **闫楠 201900161028**
 
 Github account name: [lunan0320](https://github.com/lunan0320)
 
