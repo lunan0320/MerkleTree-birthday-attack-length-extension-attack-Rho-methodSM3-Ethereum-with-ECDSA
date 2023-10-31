@@ -1,11 +1,10 @@
 This repo records some **cryptography projects** done during the learning process.
 
-
+Merkle Tree, birthday attack, length extension attack, Rho method of SM3, Ethereum with ECDSA, Forge a signature,MPT.
 
 
 Github account name: [lunan0320](https://github.com/lunan0320)
 
-***（以下项目均为个人独立完成）***
 
 ------
 
